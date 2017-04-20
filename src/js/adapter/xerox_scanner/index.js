@@ -49,9 +49,9 @@ module.exports = {
                 response.data.results.forEach((function (asset) {
                     var item = this.createItem({
                         id: asset.id,
-                        type: asset.isfolder ? 'file' : 'dir',
+                        type: asset.isfolder ? 'dir' : 'file',
                         name: asset.name,
-                        extension: asset.name,
+                        extension: asset.extension,
                         links: {
                             download: downloadUrl + asset.id,
                             open: downloadUrl + asset.id,
