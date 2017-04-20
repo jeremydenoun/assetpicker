@@ -14,7 +14,6 @@
     "moduleType": "globals",
     "main": [
         "dist/css/main.css",
-        "dist/css/picker-ui.css",
         "dist/js/picker.js"
     ],
     "ignore": [
