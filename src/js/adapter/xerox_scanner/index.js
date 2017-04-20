@@ -25,7 +25,6 @@ module.exports = {
         'load-more-items': function (items) {
             this.loadAssets().forEach(function(item) {
                     items.push(item);
-                });
             });
         }
     },
