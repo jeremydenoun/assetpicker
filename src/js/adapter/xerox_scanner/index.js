@@ -42,7 +42,7 @@ module.exports = {
     watch: {
         'appConfig.pick': {
             handler: function (config) {
-                this.loadAssets(items);
+                this.loadAssets({});
             },
             immediate: true
         }
