@@ -43,7 +43,7 @@ module.exports = {
                 }
             ).then((function(response) {
                 console.log(response);
-                console.log(JSON.parse(response));
+                console.log(JSON.parse(response.data));
                 return result;
                 if (result.items.query === query) {
                     result.page = parseInt(response.data.response.page);
