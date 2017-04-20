@@ -58,6 +58,7 @@ module.exports = {
                         },
                         data: asset
                     });
+                    console.log(result.items);
                     result.items.push(item);
                 }).bind(this));
 
