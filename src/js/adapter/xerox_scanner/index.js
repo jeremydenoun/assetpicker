@@ -58,11 +58,11 @@ module.exports = {
                         },
                         data: asset
                     });
-                    console.log(result.items);
+                    
                     result.items.push(item);
                 }).bind(this));
-
-                return result;
+                console.log(result);
+                return result.items;
             }).bind(this));
         }
     }
