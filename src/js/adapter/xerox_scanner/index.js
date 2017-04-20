@@ -36,7 +36,7 @@ module.exports = {
             var result = {page: 0, pages: 0, items: []};
             this.results = result;
 
-            return this.http.get(
+            var res = this.http.get(
                 'mailbox/folder.php?name=' + this.config.directory
             ).then((function(response) {
                 var data = JSON.parse(response.data);
@@ -61,9 +61,10 @@ module.exports = {
                     
                     result.items.push(item);
                 }).bind(this));
-                console.log(result);
                 return result.items;
             }).bind(this));
+            console.log(res);
+            return res;
         }
     }
 };
