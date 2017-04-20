@@ -13,8 +13,9 @@
     "license": "MIT",
     "moduleType": "globals",
     "main": [
-        "scss/bootstrap.scss",
-        "dist/js/picker.min.js"
+        "dist/css/main.css",
+        "dist/css/picker-ui.css",
+        "dist/js/picker.js"
     ],
     "ignore": [
         "/.*",

@@ -45,7 +45,7 @@ module.exports = Vue.extend({
             return this.config && this.config.storages ? Object.keys(this.config.storages).length : 0;
         },
         locale: function () {
-            var lang, available = ['en', 'de'];
+            var lang, available = ['en', 'de', 'fr'];
             if (!this.config || this.config.language === 'auto') {
                 lang = (navigator.language || navigator.userLanguage).replace(/^([a-z][a-z]).+$/, '$1');
             } else {

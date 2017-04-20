@@ -28,7 +28,6 @@ module.exports = {
     debug: false,
     adapters: {
         github: 'adapter/github.js',
-        entermediadb: 'adapter/entermediadb.js',
         googledrive: 'adapter/googledrive.js',
         dummy: 'adapter/dummy.js'
     },
