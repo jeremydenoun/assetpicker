@@ -31,7 +31,8 @@ module.exports = require('../shared/util/createClass')({
         if (options.modal.src.match(/^https?:\/\/localhost/) || document.location.hostname === 'localhost') {
             options.modal.src += '?' + uid();
         }
-
+        console.log("loaded");
+        console.log(document.querySelectorAll(this.options.selector));
         this.pickConfig = {};
         this.options = options;
         this.modal = null;
@@ -92,8 +93,12 @@ module.exports = require('../shared/util/createClass')({
         if (element.hasAttribute('data-ui') || this.options.ui && this.options.ui.enabled) {
             this.uis.push(new UI(element, this));
         }
+        console.log("register click on");
+        console.log(element);
         element.addEventListener('click', function (event) {
             event.preventDefault();
+            console.log("clicked on");
+            console.log(element);
             this.open(element);
         }.bind(this));
     },
