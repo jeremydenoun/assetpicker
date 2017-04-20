@@ -64,8 +64,6 @@ module.exports = {
                     result.items.push(item);
                 }).bind(this));
             }).bind(this));
-
-            console.log(result);
             return result.items;
         }
     }
