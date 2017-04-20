@@ -11,14 +11,16 @@ module.exports = {
         list: '/mailbox/folder.php?name=_PUBLIC',
         download: '/mailbox/action.php?action=frc_dwnld&name=_PUBLIC&file='
     },
+    data: function() {
+        return {
+            lastId: 1
+        }
+    },
     events: {
         'load-items': function (tree) {
             tree.items = this.createItems();
         },
         'load-more-items': function (items) {
-            this.createItems().forEach(function(item) {
-                items.push(item);
-            });
         }
     },
     methods: {
