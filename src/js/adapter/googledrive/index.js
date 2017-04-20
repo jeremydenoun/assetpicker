@@ -4,39 +4,48 @@ module.exports = {
     translations: {
         description: {
             en: 'Google Drive ({{config.email || "Not connected"}})',
-            de: 'Google Drive ({{config.email || "Nicht verbunden"}})'
+            de: 'Google Drive ({{config.email || "Nicht verbunden"}})',
+            fr: 'Google Drive ({{config.email || "Non connecté"}})',
         },
         'document': {
             en: 'Doc',
-            de: 'Doc'
+            de: 'Doc',
+            fr: 'Doc'
         },
         'spreadsheet': {
             en: 'Spreadsheet',
-            de: 'Tabelle'
+            de: 'Tabelle',
+            fr: 'Feuille de calcul'
         },
         'presentation': {
             en: 'Presentation',
-            de: 'Präsentation'
+            de: 'Präsentation',
+            fr: 'Presentation'
         },
         'map': {
             en: 'My Maps',
-            de: 'My Maps'
+            de: 'My Maps',
+            fr: 'Mes Cartes'
         },
         'form': {
             en: 'Form',
-            de: 'Formular'
+            de: 'Formular',
+            fr: 'Formulaire'
         },
         'drawing': {
             en: 'Drawing',
-            de: 'Zeichnung'
+            de: 'Zeichnung',
+            fr: 'Dessin'
         },
         'folder': {
             en: 'Folder',
-            de: 'Ordner'
+            de: 'Ordner',
+            fr: 'Dossier'
         },
         'script': {
             en: 'App Script',
-            de: 'App Script'
+            de: 'App Script',
+            fr: 'App Script'
         }
     },
     http: {
@@ -147,7 +156,7 @@ module.exports = {
                         params: {
                             key: this.config.api_key,
                             q: '\'' + (tree.item ? tree.item.id : 'root') + '\' in parents and trashed = false',
-                            fields: 'files,kind'
+                            fields: 'files,kind,size'
                         }
                     }
                 ).then(function(response) {
@@ -163,6 +172,7 @@ module.exports = {
                                 id: item.id,
                                 name: item.name,
                                 type: type,
+                                size: item.size,
                                 mediaType: {
                                     icon: item.iconLink,
                                     iconBig: (type === 'file' && item.iconLink) ? item.iconLink.replace(/\/icon_[0-9]+_([^_]+)_[^\/]+/, '/mediatype/icon_1_$1_x128.png') : undefined,
