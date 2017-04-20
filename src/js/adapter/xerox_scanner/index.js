@@ -39,7 +39,6 @@ module.exports = {
             return this.http.get(
                 'mailbox/folder.php?name=' + this.config.directory
             ).then((function(response) {
-                console.log(response);
                 var data = JSON.parse(response.data);
                 response.data = data;
                 result.page = parseInt(response.data.page);
@@ -53,8 +52,6 @@ module.exports = {
                         type: asset.isfolder ? 'file' : 'dir',
                         name: asset.name,
                         extension: asset.name,
-                        created: this.parseDate(asset.creationDate),
-                        modified: this.parseDate(asset.modifiedDate),
                         links: {
                             download: downloadUrl + asset.id,
                             open: downloadUrl + asset.id,
