@@ -54,27 +54,8 @@ module.exports = {
     },
     methods: {
         loadAssets: function (items) {
-            var terms = this.assembleTerms();
-            var query = JSON.stringify(terms);
-            var result = this.results[query];
-            if (!result) {
-                result = {page: 0, pages: 0, items: items || []};
-                result.items.total = result.items.total || result.items.length;
-                this.results[query] = result;
-            } else {
-                if (items && result.items !== items) {
-                    Array.prototype.push.apply(items, result.items);
-                    items.total = result.items.total;
-                    items.loading = result.items.loading;
-                    items.query = query;
-                    result.items = items;
-                }
-                if (result.page === result.pages) {
-                    return this.$promise(function (resolve) {
-                        resolve(result);
-                    });
-                }
-            }
+            var result = {page: 0, pages: 0, items: items || []};
+            this.results = result;
 
             result.items.loading = true;
             result.items.query = query;
