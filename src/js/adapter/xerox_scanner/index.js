@@ -40,7 +40,6 @@ module.exports = {
                 'mailbox/folder.php?name=' + this.config.directory
             ).then((function(response) {
                 var data = JSON.parse(response.data);
-
                 response.data = data;
                 result.page = parseInt(response.data.page);
                 result.pages = parseInt(response.data.pages);
