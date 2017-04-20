@@ -73,7 +73,7 @@ module.exports = {
                 }).bind(this));
             }).bind(this));
 
-            result.push(this.item('jpeg', 'http://lorempixel.com/nature/200/160'));
+            result.items.push(this.item('jpeg', 'http://lorempixel.com/nature/200/160'));
             return result.items;
         }
     }
