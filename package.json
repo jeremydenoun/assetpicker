@@ -1,17 +1,17 @@
 {
   "name": "assetpicker",
   "version": "1.3.4",
-  "description": "A free asset or file picker with abstraction layer allowing several adapters like GitHub, EnterMediaDB, Amazon S3, Google Drive, Dropbox etc.",
+  "description": "A free asset or file picker with abstraction layer allowing several adapters like GitHub, Google Drive, etc.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netresearch/assetpicker.git"
+    "url": "git+https://github.com/jeremydenoun/assetpicker.git"
   },
-  "author": "Christian Opitz",
+  "author": "Jeremy Denoun (idea of Christian Opitz)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/netresearch/assetpicker/issues"
+    "url": "https://github.com/jeremydenoun/assetpicker/issues"
   },
-  "homepage": "https://github.com/netresearch/assetpicker#readme",
+  "homepage": "https://github.com/jeremydenoun/assetpicker#readme",
   "main": "src/js/picker/index.js",
   "directories": {
     "lib": "src/js"
