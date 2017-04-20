@@ -13,21 +13,11 @@ module.exports = {
     },
     events: {
         'load-items': function (tree) {
-            if (this.lastId >= 1400) {
-                return;
-            }
-            this.mockLoad(function() {
-                tree.items = this.createItems();
-            });
+            tree.items = this.createItems();
         },
         'load-more-items': function (items) {
-            if (this.lastId >= 1400) {
-                return;
-            }
-            this.mockLoad(function() {
-                this.createItems().forEach(function(item) {
-                    items.push(item);
-                });
+            this.createItems().forEach(function(item) {
+                items.push(item);
             });
         }
     },
