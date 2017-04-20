@@ -47,8 +47,6 @@ module.exports = {
                 response.data = data;
                 result.page = parseInt(response.data.page);
                 result.pages = parseInt(response.data.pages);
-                //result.items.total = parseInt(response.data.total);
-                //result.items.loading = false;
                 var downloadUrl = this.config.url.replace(/\/+$/, '') + '/mailbox/action.php?action=frc_dwnld&name=' + this.config.directory + "&file=";
                 response.data.results.forEach((function (asset) {
                     var item = this.createItem({
@@ -67,7 +65,6 @@ module.exports = {
                 }).bind(this));
             }).bind(this));
 
-            result.items.push(this.item('jpeg', 'http://lorempixel.com/nature/200/160'));
             console.log(result);
             return result.items;
         }
