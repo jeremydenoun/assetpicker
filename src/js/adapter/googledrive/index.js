@@ -172,7 +172,6 @@ module.exports = {
                                 id: item.id,
                                 name: item.name,
                                 type: type,
-                                size: item,
                                 mediaType: {
                                     icon: item.iconLink,
                                     iconBig: (type === 'file' && item.iconLink) ? item.iconLink.replace(/\/icon_[0-9]+_([^_]+)_[^\/]+/, '/mediatype/icon_1_$1_x128.png') : undefined,
