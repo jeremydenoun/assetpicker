@@ -1,4 +1,5 @@
 var Vue = require('vue');
+Vue.config.devtools = false;
 
 Vue.use(require('vue-resource'));
 
@@ -128,8 +129,6 @@ module.exports = Vue.extend({
         },
         'config-loaded': function (config) {
             Vue.config.debug = config.debug;
-            Vue.config.silent = config.silent;
-            Vue.config.devtools = config.devtools;
             this.$set('config', config);
             this.$nextTick(function () {
                 this.loadAdapters().then(function () {
