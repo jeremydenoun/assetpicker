@@ -33,7 +33,7 @@ module.exports = {
     },
     methods: {
         loadAssets: function (items) {
-            var result = {page: 0, pages: 0, items: items || []};
+            var result = {page: 0, pages: 0, items: []};
             this.results = result;
 
             return this.http.get(
