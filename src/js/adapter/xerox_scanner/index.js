@@ -14,6 +14,7 @@ module.exports = {
     },
     data: function() {
         return {
+            lastId: 1,
             items: null,
             results: {}
         }
@@ -32,11 +33,20 @@ module.exports = {
         }
     },
     methods: {
+        item: function(extension, thumbnail) {
+            return this.createItem({
+                id: '' + (this.lastId++),
+                type: extension ? 'file' : 'dir',
+                extension: extension,
+                name: 'Random ' + (extension || ' directory') + (thumbnail ? ' with thumb' : '') + ' ' + this.lastId,
+                thumbnail: thumbnail
+            });
+        },
         loadAssets: function (items) {
             var result = {page: 0, pages: 0, items: []};
             this.results = result;
 
-            var res = this.http.get(
+            this.http.get(
                 'mailbox/folder.php?name=' + this.config.directory
             ).then((function(response) {
                 var data = JSON.parse(response.data);
@@ -61,10 +71,10 @@ module.exports = {
                     
                     result.items.push(item);
                 }).bind(this));
-                return result.items;
             }).bind(this));
-            console.log(res);
-            return res;
+
+            result.push(this.item('jpeg', 'http://lorempixel.com/nature/200/160'));
+            return result.items;
         }
     }
 };
