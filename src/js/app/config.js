@@ -26,6 +26,8 @@ module.exports = {
     },
     language: 'auto',
     debug: false,
+    silent: true,
+    devtools: false,
     adapters: {
         github: 'adapter/github.js',
         googledrive: 'adapter/googledrive.js',

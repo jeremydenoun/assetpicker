@@ -128,7 +128,6 @@ module.exports = Vue.extend({
         },
         'config-loaded': function (config) {
             Vue.config.debug = config.debug;
-            console.log(config);
             Vue.config.silent = config.silent;
             Vue.config.devtools = config.devtools;
             this.$set('config', config);
