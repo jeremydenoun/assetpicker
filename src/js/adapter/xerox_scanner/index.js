@@ -39,6 +39,14 @@ module.exports = {
             results: {}
         }
     },
+    watch: {
+        'appConfig.pick': {
+            handler: function (config) {
+                this.loadAssets(items);
+            },
+            immediate: true
+        }
+    },
     events: {
         'load-more-items': function (results) {
             this.loadAssets(results);
