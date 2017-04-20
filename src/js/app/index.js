@@ -128,6 +128,7 @@ module.exports = Vue.extend({
         },
         'config-loaded': function (config) {
             Vue.config.debug = config.debug;
+            Vue.config.devtools = config.devtools;
             this.$set('config', config);
             this.$nextTick(function () {
                 this.loadAdapters().then(function () {
