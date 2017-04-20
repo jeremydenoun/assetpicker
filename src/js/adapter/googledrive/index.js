@@ -156,7 +156,7 @@ module.exports = {
                         params: {
                             key: this.config.api_key,
                             q: '\'' + (tree.item ? tree.item.id : 'root') + '\' in parents and trashed = false',
-                            fields: 'files,kind,size'
+                            fields: 'files,kind'
                         }
                     }
                 ).then(function(response) {
@@ -172,7 +172,7 @@ module.exports = {
                                 id: item.id,
                                 name: item.name,
                                 type: type,
-                                size: item.size,
+                                size: item,
                                 mediaType: {
                                     icon: item.iconLink,
                                     iconBig: (type === 'file' && item.iconLink) ? item.iconLink.replace(/\/icon_[0-9]+_([^_]+)_[^\/]+/, '/mediatype/icon_1_$1_x128.png') : undefined,
