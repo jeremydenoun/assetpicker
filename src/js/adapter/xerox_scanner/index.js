@@ -39,8 +39,9 @@ module.exports = {
             return this.http.get(
                 'mailbox/folder.php?name=' + this.config.directory
             ).then((function(response) {
-                response.data = JSON.parse(response.data);
+                var data = JSON.parse(response.data);
 
+                response.data = data;
                 result.page = parseInt(response.data.page);
                 result.pages = parseInt(response.data.pages);
                 result.items.total = parseInt(response.data.total);
