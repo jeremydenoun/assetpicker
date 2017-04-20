@@ -1,4 +1,5 @@
 var Vue = require('vue');
+Vue.config.devtools = false;
 
 var Item = require('../model/item');
 
