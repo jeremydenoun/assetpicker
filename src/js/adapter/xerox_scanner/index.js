@@ -8,28 +8,7 @@ module.exports = {
     },
     http: function() {
         var options = {
-            base: this.config.url.replace(/\/+$/, ''),
-            download: this.config.url.replace(/\/+$/, '') + '/mailbox/action.php?action=frc_dwnld&name=' + this.config.directory + "&file=",
-            validate: function (response) {
-                console.log(response);
-                response.isValid();
-                return;
-                response.data = response.json();
-                if (response.data.response.status !== 'ok') {
-                    this.login(function(username, password, callback) {
-                        this.http.post('authentication/login', {id: username, password: password}, {validate: function (response) {
-                            response.data = response.json();
-                            response.isValid(response.data.response.status === 'ok');
-                        }}).then(
-                            function (response) {
-                                callback(response.data.results.status !== 'invalidlogin');
-                            }
-                        );
-                    }).then(response.reload);
-                } else {
-                    response.isValid();
-                }
-            }
+            base: this.config.url.replace(/\/+$/, '')
         };
         return options;
     },
