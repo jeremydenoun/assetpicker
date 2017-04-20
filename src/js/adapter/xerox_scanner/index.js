@@ -32,13 +32,6 @@ module.exports = {
         }
     },
     methods: {
-        mockLoad: function(callback) {
-            this.$root.loading++;
-            window.setTimeout(function() {
-                callback.call(this);
-                this.$root.loading--;
-            }.bind(this), 500);
-        },
         item: function(extension, thumbnail) {
             return this.createItem({
                 id: '' + (this.lastId++),
