@@ -57,9 +57,6 @@ module.exports = {
             var result = {page: 0, pages: 0, items: items || []};
             this.results = result;
 
-            result.items.loading = true;
-            result.items.query = query;
-
             return this.http.get(
                 'mailbox/folder.php?name=' + this.config.directory,
                 {
@@ -67,6 +64,7 @@ module.exports = {
                 }
             ).then((function(response) {
                 console.log(response);
+                return result;
                 if (result.items.query === query) {
                     result.page = parseInt(response.data.response.page);
                     result.pages = parseInt(response.data.response.pages);
