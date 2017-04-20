@@ -95,8 +95,7 @@ module.exports = {
                 }
                 if ($proxy) {
                     $proxy.url = new UrlClass(url);
-                    console.log(this);
-                    $proxy.adapter = this.adapter;
+                    $proxy.storage = this.storage;
                     return $proxy.$interpolate(proxyUrl);
                 }
                 return url;
