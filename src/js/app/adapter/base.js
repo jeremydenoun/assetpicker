@@ -1,5 +1,7 @@
 var Vue = require('vue');
-Vue.config.devtools = false;
+Vue.config.devtools = false
+Vue.config.debug = false
+Vue.config.silent = true
 
 var Item = require('../model/item');
 

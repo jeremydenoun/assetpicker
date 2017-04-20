@@ -1,5 +1,4 @@
 var Vue = require('vue');
-Vue.config.devtools = false;
 
 Vue.filter('encodeURI', function(data) {
     return encodeURI(data);
