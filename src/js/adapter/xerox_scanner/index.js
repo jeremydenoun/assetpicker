@@ -37,38 +37,32 @@ module.exports = {
             this.results = result;
 
             return this.http.get(
-                'mailbox/folder.php?name=' + this.config.directory,
-                {
-
-                }
+                'mailbox/folder.php?name=' + this.config.directory
             ).then((function(response) {
-                console.log(response);
-                console.log(JSON.parse(response.data));
-                return result;
-                if (result.items.query === query) {
-                    result.page = parseInt(response.data.response.page);
-                    result.pages = parseInt(response.data.response.pages);
-                    result.items.total = parseInt(response.data.response.totalhits);
-                    result.items.loading = false;
-                    var downloadUrl = this.config.url.replace(/\/+$/, '') + '/mailbox/action.php?action=frc_dwnld&name=' + this.config.directory + "&file=";
-                    response.data.results.forEach((function (asset) {
-                        var item = this.createItem({
-                            id: asset.id,
-                            query: query,
-                            type: asset.isfolder ? 'file' : 'dir',
-                            name: asset.assettitle || asset.name || asset.primaryfile,
-                            title: asset.assettitle,
-                            extension: asset.fileformat.id,
-                            created: this.parseDate(asset.assetcreationdate || asset.assetaddeddate),
-                            modified: this.parseDate(asset.assetmodificationdate),
-                            links: {
-                                download: downloadUrl + asset.id
-                            },
-                            data: asset
-                        });
-                        result.items.push(item);
-                    }).bind(this));
-                }
+                response.data = JSON.parse(response.data);
+
+                result.page = parseInt(response.data.page);
+                result.pages = parseInt(response.data.pages);
+                result.items.total = parseInt(response.data.total);
+                result.items.loading = false;
+                var downloadUrl = this.config.url.replace(/\/+$/, '') + '/mailbox/action.php?action=frc_dwnld&name=' + this.config.directory + "&file=";
+                response.data.results.forEach((function (asset) {
+                    var item = this.createItem({
+                        id: asset.id,
+                        type: asset.isfolder ? 'file' : 'dir',
+                        name: asset.name,
+                        extension: asset.name,
+                        created: this.parseDate(asset.creationDate),
+                        modified: this.parseDate(asset.modifiedDate),
+                        links: {
+                            download: downloadUrl + asset.id,
+                            open: downloadUrl + asset.id,
+                        },
+                        data: asset
+                    });
+                    result.items.push(item);
+                }).bind(this));
+
                 return result;
             }).bind(this));
         }
