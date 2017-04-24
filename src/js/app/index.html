@@ -34,6 +34,9 @@
                     <div v-if="!numStorages">
                         <div class="alert alert-warning" style="margin-top: 15px;">No storages configured</div>
                     </div>
+                    <div v-if="$refs.items.storage">
+                        <div class="alert alert-warning" style="margin-top: 15px;">In storage</div>
+                    </div>
                     <items v-else v-ref:items></items>
                 </div>
             </div>
