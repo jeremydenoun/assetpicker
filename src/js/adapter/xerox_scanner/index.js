@@ -21,11 +21,6 @@ module.exports = {
     events: {
         'select-item': function (item) {
             this.config.current_item = item;
-            console.log(this);
-            this.loadAssets().then((function(response) {
-                    this.items = response.items;
-                    this.$parent.$dispatch('select-item', this);
-                }).bind(this));
         },
         'load-items': function (tree) {
             tree.items = this.loadAssets();
@@ -61,6 +56,8 @@ module.exports = {
                         });
                         result.items.push(item);
                     }).bind(this));
+                    this.items = response.items;
+                    this.$parent.$dispatch('select-item', this);
         	   }
             }).bind(this));
             return result.items;
