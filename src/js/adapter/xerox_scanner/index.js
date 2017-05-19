@@ -36,13 +36,12 @@ module.exports = {
             var result = {page: 0, pages: 0, items: []};
             console.log(this.config.current_item);
             this.http.get(
-                'mailbox/folder.php?name=' + this.config.directory
+                ''
             ).then((function(response) {
                 var data = JSON.parse(response.data);
                 response.data = data;
                 result.page = parseInt(response.data.page);
                 result.pages = parseInt(response.data.pages);
-                var downloadUrl = this.config.url.replace(/\/+$/, '') + '/mailbox/action.php?action=frc_dwnld&name=' + this.config.directory + "&file=";
         		if (response.data && response.data.results) {
                     response.data.results.forEach((function (asset) {
                         var item = this.createItem({
@@ -51,8 +50,8 @@ module.exports = {
                           name: asset.name,
                           extension: asset.extension,
                           links: {
-                            download: asset.isfolder ? downloadUrl + asset.id : null,
-                            open: asset.isfolder ? downloadUrl + asset.id : null,
+                            download: asset.downloadUrl ? asset.downloadUrl : null,
+                            open: asset.openUrl ? asset.openUrl : null,
                           },
                           data: asset
                         });

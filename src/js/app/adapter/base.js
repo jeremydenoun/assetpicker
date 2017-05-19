@@ -98,6 +98,9 @@ module.exports = {
                     $proxy.storage = this.storage;
                     $proxy.base = base ? (base + '').replace(/\/+$/, '') : "";
                     $proxy.dir = "";
+                    if (typeof this.config.current_item == "object") {
+                        $proxy.dir = this.config.current_item.item.id;
+                    }
                     return $proxy.$interpolate(proxyUrl);
                 }
                 return url;
