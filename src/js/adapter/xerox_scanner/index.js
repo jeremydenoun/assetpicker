@@ -21,6 +21,10 @@ module.exports = {
     events: {
         'select-item': function (item) {
             this.config.current_item = item;
+            this.loadAssets().then((function(response) {
+                    this.items = response.items;
+                    this.$parent.$dispatch('select-item', this);
+                }).bind(this));
         },
         'load-items': function (tree) {
             tree.items = this.loadAssets();
@@ -34,7 +38,6 @@ module.exports = {
     methods: {
         loadAssets: function () {
             var result = {page: 0, pages: 0, items: []};
-            console.log(this.config.current_item);
             this.http.get(
                 ''
             ).then((function(response) {
