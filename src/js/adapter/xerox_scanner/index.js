@@ -21,6 +21,7 @@ module.exports = {
     events: {
         'select-item': function (item) {
             this.config.current_item = item;
+            console.log(this);
             this.loadAssets().then((function(response) {
                     this.items = response.items;
                     this.$parent.$dispatch('select-item', this);
