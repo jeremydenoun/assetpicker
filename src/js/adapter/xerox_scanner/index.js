@@ -1,5 +1,3 @@
-
-
 module.exports = {
     translations: {
         description: {
@@ -31,12 +29,6 @@ module.exports = {
             this.loadAssets().forEach(function(item) {
                     items.push(item);
             });
-        },
-        'category-load-items': function (tree) {
-            console.log(tree.item ? tree.item.id : 'index');
-        },
-        'category-select-item': function (tree) {
-            console.log(tree.item ? tree.item : 'index');
         }
     },
     methods: {
@@ -49,7 +41,7 @@ module.exports = {
                 response.data = data;
                 result.page = parseInt(response.data.page);
                 result.pages = parseInt(response.data.pages);
-                if (response.data && response.data.results) {
+        		if (response.data && response.data.results) {
                     response.data.results.forEach((function (asset) {
                         var item = this.createItem({
                           id: asset.id,
@@ -64,9 +56,7 @@ module.exports = {
                         });
                         result.items.push(item);
                     }).bind(this));
-                    this.items = response.items;
-                    this.$parent.$dispatch('select-item', this);
-               }
+        	   }
             }).bind(this));
             return result.items;
         }
