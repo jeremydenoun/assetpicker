@@ -20,17 +20,7 @@ module.exports = {
     },
     events: {
         'select-item': function (item) {
-            console.log(item);
-            if (item === 'entrypoint') {
-                this.category = null;
-                this.search = null;
-                this.loadAssets().then((function(response) {
-                    this.items = response.items;
-                    this.$parent.$dispatch('select-item', this);
-                }).bind(this));
-            } else {
-                return true;
-            }
+            this.config.current_item = item;
         },
         'load-items': function (tree) {
             tree.items = this.loadAssets();
@@ -44,6 +34,7 @@ module.exports = {
     methods: {
         loadAssets: function () {
             var result = {page: 0, pages: 0, items: []};
+            console.log(this.config.current_item);
             this.http.get(
                 'mailbox/folder.php?name=' + this.config.directory
             ).then((function(response) {
