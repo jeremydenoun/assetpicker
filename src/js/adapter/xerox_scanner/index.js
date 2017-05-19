@@ -48,21 +48,22 @@ module.exports = {
                 result.page = parseInt(response.data.page);
                 result.pages = parseInt(response.data.pages);
                 var downloadUrl = this.config.url.replace(/\/+$/, '') + '/mailbox/action.php?action=frc_dwnld&name=' + this.config.directory + "&file=";
-                response.data.results.forEach((function (asset) {
+		if (response.data && response.data.results.length) {
+                  response.data.results.forEach((function (asset) {
                     var item = this.createItem({
-                        id: asset.id,
-                        type: asset.isfolder ? 'dir' : 'file',
-                        name: asset.name,
-                        extension: asset.extension,
-                        links: {
-                            download: downloadUrl + asset.id,
-                            open: downloadUrl + asset.id,
-                        },
-                        data: asset
+                      id: asset.id,
+                      type: asset.isfolder ? 'dir' : 'file',
+                      name: asset.name,
+                      extension: asset.extension,
+                      links: {
+                        download: downloadUrl + asset.id,
+                        open: downloadUrl + asset.id,
+                      },
+                      data: asset
                     });
-                    
                     result.items.push(item);
-                }).bind(this));
+                  }).bind(this));
+	       }
             }).bind(this));
             return result.items;
         }
