@@ -96,6 +96,8 @@ module.exports = {
                 if ($proxy) {
                     $proxy.url = new UrlClass(url);
                     $proxy.storage = this.storage;
+                    $proxy.base = base ? (base + '').replace(/\/+$/, '') : "";
+                    $proxy.dir = "";
                     console.log(this);
                     return $proxy.$interpolate(proxyUrl);
                 }
