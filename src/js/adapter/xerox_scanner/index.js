@@ -19,6 +19,19 @@ module.exports = {
         }
     },
     events: {
+        'select-item': function (item) {
+            console.log(item);
+            if (item === 'entrypoint') {
+                this.category = null;
+                this.search = null;
+                this.loadAssets().then((function(response) {
+                    this.items = response.items;
+                    this.$parent.$dispatch('select-item', this);
+                }).bind(this));
+            } else {
+                return true;
+            }
+        },
         'load-items': function (tree) {
             tree.items = this.loadAssets();
         },
@@ -31,7 +44,6 @@ module.exports = {
     methods: {
         loadAssets: function () {
             var result = {page: 0, pages: 0, items: []};
-            console.log(this);
             this.http.get(
                 'mailbox/folder.php?name=' + this.config.directory
             ).then((function(response) {
@@ -48,8 +60,8 @@ module.exports = {
                           name: asset.name,
                           extension: asset.extension,
                           links: {
-                            download: downloadUrl + asset.id,
-                            open: downloadUrl + asset.id,
+                            download: asset.isfolder ? downloadUrl + asset.id : null,
+                            open: asset.isfolder ? downloadUrl + asset.id : null,
                           },
                           data: asset
                         });
