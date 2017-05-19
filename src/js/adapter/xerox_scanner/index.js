@@ -48,7 +48,7 @@ module.exports = {
                 result.page = parseInt(response.data.page);
                 result.pages = parseInt(response.data.pages);
                 var downloadUrl = this.config.url.replace(/\/+$/, '') + '/mailbox/action.php?action=frc_dwnld&name=' + this.config.directory + "&file=";
-		if (response.data && response.data.results.length) {
+		if (response.data && response.data.results) {
                   response.data.results.forEach((function (asset) {
                     var item = this.createItem({
                       id: asset.id,
