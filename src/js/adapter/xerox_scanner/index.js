@@ -42,6 +42,7 @@ module.exports = {
                 result.page = parseInt(response.data.page);
                 result.pages = parseInt(response.data.pages);
         		if (response.data && response.data.results) {
+                    console.log(response.data.results);
                     response.data.results.forEach((function (asset) {
                         var item = this.createItem({
                           id: asset.id,
